@@ -5,6 +5,7 @@ import './App.css'
 import {Route, Routes}  from "react-router-dom"
 import { Home } from './views/Home/Home'
 import { Landing } from './views/Landing/Landing'
+import { NavBar } from './components/NavBar/NavBar'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" Component={Landing}/>
           <Route path="/home" element={<Home/>}/>
+          <Route path="/Nav" Component={NavBar}/>
         </Routes>
       
     </>
