@@ -9,8 +9,6 @@ export function  NavBar() {
             <button>
             MENU
             </button>
-            <l></l>
-           
             <Link to="/home"> 
             <button>
         INICIO

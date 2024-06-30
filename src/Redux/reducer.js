@@ -1,8 +1,7 @@
 import { FETCH_PRODUCTS } from "./actions/Products/get_Products";
 
 const initialState = {
-    AllProducts: [],
-    Product: [],
+    Products: [],
     Sells: [],
     detail: [],
 }
@@ -12,8 +11,7 @@ const rootReducer = (state = initialState, action) => {
         case FETCH_PRODUCTS:
             return {
                 ...state,
-                Product: action.payload,
-                AllProducts: action.payload,
+                Products: action.payload,
             };
             default:
                 return {...state};
