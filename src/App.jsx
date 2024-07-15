@@ -6,6 +6,7 @@ import {Route, Routes}  from "react-router-dom"
 import  Home  from './views/Home/Home'
 import { Landing } from './views/Landing/Landing'
 import { NavBar } from './components/NavBar/NavBar'
+import Create from './views/Create/Create'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" Component={Home}/>
           <Route path="/home" element={<Home/>}/>
           <Route path="/Nav" Component={NavBar}/>
+          <Route path="create" Component={Create}/>
         </Routes>
       
     </>
