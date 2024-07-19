@@ -28,6 +28,17 @@ const handleChange = (e) => {
 const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createProduct(product));
+
+    alert(`Producto "${product.name}" creado con exito`);
+    setProduct({
+        name: '',
+        category: '',
+        color: '',
+        description: '',
+        image: '', 
+        price: '',
+        stock: ''
+    })
 };
 
 return (
