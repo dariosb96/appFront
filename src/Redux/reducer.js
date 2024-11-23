@@ -4,10 +4,18 @@ import { DELETE_PRODUCT } from "./actions/Products/delete_product";
 import { FETCH_SELLS } from "./actions/Sells/get_sells";
 import { CREATE_SELL } from "./actions/Sells/create_sell";
 import { DELETE_SELL } from "./actions/Sells/delete_sell";
+import { FILTER_PRODUCTS } from "./actions/Products/filter_products";
+import { LOGIN_REQUEST, LOGIN_FAIL, LOGIN_SUCCESS, LOGOUT } from "./actions/Users/Login";
+
+
 const initialState = {
     Products: [],
     Sells: [],
-    detail: [],
+    FilteredProd: [],
+    user: null,
+    loading: false,
+    token: localStorage.getItem('token')? localStorage.getItem('token') : null,
+    error: null,
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -41,7 +49,34 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 Sells: state.Sells.filter(sell => sell.id !== action.payload),
-            };             
+            };
+        case FILTER_PRODUCTS:
+            return {
+                ...state,
+                FilteredProd: action.payload,
+            };
+        case LOGIN_REQUEST:
+            return{
+                ...state, 
+                loading: true, error: null};
+        case LOGIN_SUCCESS:
+            
+            return {
+                ...state,
+                loading: false, token: action.payload, error:null,
+            };
+        case LOGIN_FAIL:
+            return{
+                ...state, 
+                loading:false, token: null, error: action.payload,
+            }
+        case LOGOUT:
+            localStorage.removeItem('token');
+            return{
+                ...state,
+                token: null, error: null,
+            }                
+
             default:
                 return state;
     }

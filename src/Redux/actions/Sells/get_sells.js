@@ -7,7 +7,7 @@ export const fetchSells = () => {
         dispatch ({type: FETCH_SELLS});
 
         try {
-            const response = await axios.get('http://localhost:3000/sells');
+            const response = await axios.get('https://app-back-production-79c5.up.railway.app/sells');
             dispatch({type: FETCH_SELLS, payload: response.data});
         }catch ( error){
             return ({error: error.message});

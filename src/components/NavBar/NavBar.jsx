@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom"
+import LogOutButton from "../LogOutBtn/LogOut"
 
-Link
+
 
 export function  NavBar() {
     return(
         <div>
-            
-            <button>
-            MENU
-            </button>
+            <Link to="/create">
+               <button>
+           CREAR PRODUCTO
+            </button>   
+            </Link>
+          
             <Link to="/home"> 
             <button>
         INICIO
@@ -16,9 +19,13 @@ export function  NavBar() {
                 </Link> 
             <input>
             </input>
-            <button>
-              BUSCAR
-            </button>
+            <Link to="/create_sell">
+                <button>
+              CREAR VENTA
+            </button>  
+            </Link>
+            <LogOutButton></LogOutButton>
+          
         </div>
     )
 }

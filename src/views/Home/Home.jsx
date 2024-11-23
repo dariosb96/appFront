@@ -9,10 +9,13 @@ import { fetchProducts } from "../../Redux/actions/Products/get_Products";
 const Home = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.Products || []);
+    const token = useSelector((state) => state.token);
 
     useEffect(() => {
-        dispatch(fetchProducts());
-    }, [dispatch]);
+        if(token){
+            dispatch(fetchProducts(token));
+        }    
+    }, [dispatch, token]);
 
     return (
         <div>

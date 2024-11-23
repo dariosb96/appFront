@@ -6,7 +6,7 @@ import { deleteProduct } from "../../Redux/actions/Products/delete_product";
 const Card = ({product }) =>{
     const dispatch = useDispatch();
 const {
-    id, name, category, color, description, image, price, stock
+    id, name, category, color, description, image, price, buyprice, stock
 } = product;
 
 const handleDleteProduct = () =>{
@@ -15,6 +15,7 @@ const handleDleteProduct = () =>{
 
 return (
     <div className="card">
+        <p >id: {id} </p>
         <img src={image} alt={name} className="card-image" />
         <button onClick={handleDleteProduct}></button>
         <div className="card-content">
@@ -23,7 +24,8 @@ return (
             {color && <p className="card-color">Color: {color}</p>}
                 {description && <p className="card-description">{description}</p>}
                 
-                <p className="card-price">Price: ${price.toFixed(2)}</p>
+                <p className="card-price">Price: ${price}</p>
+                <p className="card-price">Price: ${buyprice}</p>
                 <p className="card-stock">Stock: {stock}</p>
                 
         </div>

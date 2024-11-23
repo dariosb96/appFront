@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {createProduct}  from "../../Redux/actions/Products/create_Product";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Create.module.css"
 
 const Create = () => {
@@ -12,10 +12,12 @@ const Create = () => {
         description: '',
         image: '', 
         price: '',
+        buyprice: '',
         stock: ''
     });
 
     const dispatch = useDispatch();
+    const token = useSelector(state => state.token);
     
 
 const handleChange = (e) => {
@@ -27,7 +29,7 @@ const handleChange = (e) => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProduct(product));
+    dispatch(createProduct(product, token));
 
     alert(`Producto "${product.name}" creado con exito`);
     setProduct({
@@ -37,6 +39,7 @@ const handleSubmit = (e) => {
         description: '',
         image: '', 
         price: '',
+        buyprice: '',
         stock: ''
     })
 };
@@ -89,6 +92,14 @@ return (
                 name="price"
                 placeholder="price"
                 value={product.price}
+                onChange={handleChange}
+                className="input-field"
+            />
+             <input
+                type="number"
+                name="buyprice"
+                placeholder="buy price"
+                value={product.buyprice}
                 onChange={handleChange}
                 className="input-field"
             />
